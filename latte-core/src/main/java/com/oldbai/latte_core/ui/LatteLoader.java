@@ -1,6 +1,5 @@
 package com.oldbai.latte_core.ui;
 
-import android.app.Dialog;
 import android.content.Context;
 import android.support.v7.app.AppCompatDialog;
 import android.view.Gravity;
@@ -8,11 +7,10 @@ import android.view.Window;
 import android.view.WindowManager;
 
 import com.oldbai.latte_core.R;
-import com.oldbai.latte_core.util.DimenUtil;
+import com.oldbai.latte_core.util.dimen.DimenUtil;
 import com.wang.avi.AVLoadingIndicatorView;
 
 import java.util.ArrayList;
-import java.util.concurrent.CopyOnWriteArrayList;
 
 public class LatteLoader {
 
