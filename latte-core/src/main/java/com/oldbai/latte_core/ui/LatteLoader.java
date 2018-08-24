@@ -21,8 +21,8 @@ public class LatteLoader {
 
     private static final String DEFAULT_LOADER = LoaderStyle.BallClipRotatePulseIndicator.name();
 
-    public static void showLoading(Context context,Enum<LoaderStyle> type) {
-        showLoading(context,type.name());
+    public static void showLoading(Context context, Enum<LoaderStyle> type) {
+        showLoading(context, type.name());
     }
 
     public static void showLoading(Context context, String type) {

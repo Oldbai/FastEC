@@ -10,7 +10,7 @@ import com.oldbai.latte_core.delegates.LatteDelegate;
 
 import me.yokeyword.fragmentation.SupportActivity;
 
-public abstract class ProxyActivity extends SupportActivity{
+public abstract class ProxyActivity extends SupportActivity {
 
     public abstract LatteDelegate setRootDelegate();
 
@@ -25,7 +25,7 @@ public abstract class ProxyActivity extends SupportActivity{
         container.setId(R.id.delegate_container);
 
         setContentView(container);
-        if (savedInstanceState==null) {
+        if (savedInstanceState == null) {
             loadRootFragment(R.id.delegate_container, setRootDelegate());
         }
     }

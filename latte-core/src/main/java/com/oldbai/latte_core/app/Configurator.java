@@ -47,8 +47,8 @@ public class Configurator {
         return this;
     }
 
-    private void initIcons(){
-        if (ICONS.size()>0){
+    private void initIcons() {
+        if (ICONS.size() > 0) {
             final Iconify.IconifyInitializer initializer = Iconify.with(ICONS.get(0));
             for (int i = 1; i < ICONS.size(); i++) {
                 initializer.with(ICONS.get(i));
@@ -61,13 +61,13 @@ public class Configurator {
         return this;
     }
 
-    public final Configurator withInterceptor(Interceptor interceptor){
+    public final Configurator withInterceptor(Interceptor interceptor) {
         INTERCEPTORS.add(interceptor);
         LATTE_CONFIGS.put(ConfigKeys.INTERCEPTOR, INTERCEPTORS);
         return this;
     }
 
-    public final Configurator withInterceptor(ArrayList<Interceptor> interceptors){
+    public final Configurator withInterceptor(ArrayList<Interceptor> interceptors) {
         INTERCEPTORS.addAll(interceptors);
         LATTE_CONFIGS.put(ConfigKeys.INTERCEPTOR, INTERCEPTORS);
         return this;
@@ -80,11 +80,11 @@ public class Configurator {
         }
     }
 
-    final <T> T getConfiguration(Object key){
+    final <T> T getConfiguration(Object key) {
         checkConfiguration();
         final Object value = LATTE_CONFIGS.get(key);
         if (value == null) {
-            throw new NullPointerException(key.toString()+"IS NULL");
+            throw new NullPointerException(key.toString() + "IS NULL");
         }
         return (T) LATTE_CONFIGS.get(key);
     }

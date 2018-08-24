@@ -21,15 +21,12 @@ public enum LoaderStyle {
     BallBeatIndicator,
     LineScalePulseOutIndicator,
     LineScalePulseOutRapidIndicator,
-
     BallScaleRippleIndicator,
     BallScaleRippleMultipleIndicator,
     BallSpinFadeLoaderIndicator,
     LineSpinFadeLoaderIndicator,
-
     TriangleSkewSpinIndicator,
     PacmanIndicator,
     BallGridBeatIndicator,
     SemiCircleSpinIndicator
-
 }

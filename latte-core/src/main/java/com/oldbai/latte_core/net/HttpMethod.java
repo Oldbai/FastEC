@@ -1,6 +1,6 @@
 package com.oldbai.latte_core.net;
 
-public enum  HttpMethod {
+public enum HttpMethod {
     GET,
     POST,
     POST_RAW,

@@ -13,7 +13,7 @@ public final class Latte {
         return Configurator.getInstance();
     }
 
-    public static Configurator getConfigurator(){
+    public static Configurator getConfigurator() {
         return Configurator.getInstance();
     }
 

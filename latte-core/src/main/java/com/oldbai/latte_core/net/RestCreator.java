@@ -25,7 +25,6 @@ public class RestCreator {
     }
 
 
-
     private static final class RetrofitHolder {
         private static final String BASE_URL = Latte.getConfiguration(ConfigKeys.API_HOST);
         private static final Retrofit RETROFIT_CLIENT = new Retrofit.Builder()
