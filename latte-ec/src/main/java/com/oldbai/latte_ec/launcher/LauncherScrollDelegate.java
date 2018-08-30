@@ -1,14 +1,19 @@
 package com.oldbai.latte_ec.launcher;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
 
 import com.bigkoo.convenientbanner.ConvenientBanner;
 import com.bigkoo.convenientbanner.listener.OnItemClickListener;
+import com.oldbai.latte_core.app.AccountManger;
 import com.oldbai.latte_core.app.ConfigKeys;
+import com.oldbai.latte_core.app.IUserChecker;
 import com.oldbai.latte_core.delegates.LatteDelegate;
+import com.oldbai.latte_core.ui.launcher.ILauncherListener;
 import com.oldbai.latte_core.ui.launcher.LauncherHolderCreator;
+import com.oldbai.latte_core.ui.launcher.OnLauncherFinishTag;
 import com.oldbai.latte_core.ui.launcher.ScrollLauncherTag;
 import com.oldbai.latte_core.util.storage.LattePreference;
 import com.oldbai.latte_ec.R;
@@ -19,6 +24,8 @@ public class LauncherScrollDelegate extends LatteDelegate implements OnItemClick
 
     private ConvenientBanner<Integer> mConvenientBanner = null;
     private static final ArrayList<Integer> INTEGERS = new ArrayList<>();
+    private ILauncherListener mILauncherListener = null;
+
 
     private void initBanner() {
         INTEGERS.add(R.mipmap.launcher_01);
@@ -32,6 +39,14 @@ public class LauncherScrollDelegate extends LatteDelegate implements OnItemClick
                 .setPageIndicatorAlign(ConvenientBanner.PageIndicatorAlign.CENTER_HORIZONTAL)
                 .setOnItemClickListener(this)
                 .setCanLoop(false);
+    }
+
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        if (activity instanceof ILauncherListener) {
+            mILauncherListener = (ILauncherListener) activity;
+        }
     }
 
     @Override
@@ -52,7 +67,21 @@ public class LauncherScrollDelegate extends LatteDelegate implements OnItemClick
         if (position == INTEGERS.size() - 1) {
             LattePreference.setAppFlag(ScrollLauncherTag.HAS_FIRST_LAUNCHER_APP.name(), true);
             //检查用户是否已经登陆
+            AccountManger.checkAccount(new IUserChecker() {
+                @Override
+                public void onSignIn() {
+                    if (mILauncherListener != null) {
+                        mILauncherListener.onLauncherFinish(OnLauncherFinishTag.SIGNED);
+                    }
+                }
 
+                @Override
+                public void onNotSignIn() {
+                    if (mILauncherListener != null) {
+                        mILauncherListener.onLauncherFinish(OnLauncherFinishTag.NOT_SIGNED);
+                    }
+                }
+            });
         }
     }
 }

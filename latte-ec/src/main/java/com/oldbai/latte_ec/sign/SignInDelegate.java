@@ -1,12 +1,17 @@
 package com.oldbai.latte_ec.sign;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TextInputEditText;
 import android.util.Patterns;
 import android.view.View;
+import android.widget.Toast;
 
 import com.oldbai.latte_core.delegates.LatteDelegate;
+import com.oldbai.latte_core.net.RestClient;
+import com.oldbai.latte_core.net.callback.ISuccess;
+import com.oldbai.latte_core.util.log.LatteLogger;
 import com.oldbai.latte_ec.R;
 import com.oldbai.latte_ec.R2;
 
@@ -20,20 +25,43 @@ public class SignInDelegate extends LatteDelegate {
     @BindView(R2.id.edit_sign_in_password)
     TextInputEditText mPassword = null;
 
-    @OnClick(R2.id.btn_sign_in)
-    void onClickSignIn(){
-        if (checkForm()){
+    private ISignListener mISignListener = null;
 
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        if (activity instanceof ISignListener) {
+            mISignListener = (ISignListener) activity;
+        }
+    }
+
+    @OnClick(R2.id.btn_sign_in)
+    void onClickSignIn() {
+        if (checkForm()) {
+            RestClient.builder()
+                    .url("http://www.baidu.com")
+                    .params("email", mEmail.getText().toString())
+                    .params("password", mPassword.getText().toString())
+                    .success(new ISuccess() {
+                        @Override
+                        public void onSuccess(String response) {
+                            LatteLogger.json("USER_PROFILE", response);
+                            SignHandler.onSignIn(response, mISignListener);
+                        }
+                    })
+                    .build()
+                    .post();
+            Toast.makeText(getContext(), "登陆验证通过", Toast.LENGTH_SHORT).show();
         }
     }
 
     @OnClick(R2.id.icon_sign_in_wechat)
-    void onClickWeChat(){
+    void onClickWeChat() {
 
     }
 
     @OnClick(R2.id.tv_link_sign_up)
-    void onClickLink(){
+    void onClickLink() {
         start(new SignUpDelegate());
     }
 

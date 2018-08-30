@@ -1,5 +1,6 @@
 package com.oldbai.latte_ec.sign;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TextInputEditText;
@@ -10,6 +11,7 @@ import android.widget.Toast;
 import com.oldbai.latte_core.delegates.LatteDelegate;
 import com.oldbai.latte_core.net.RestClient;
 import com.oldbai.latte_core.net.callback.ISuccess;
+import com.oldbai.latte_core.util.log.LatteLogger;
 import com.oldbai.latte_ec.R;
 import com.oldbai.latte_ec.R2;
 
@@ -31,26 +33,40 @@ public class SignUpDelegate extends LatteDelegate {
     @BindView(R2.id.edit_sign_up_re_password)
     TextInputEditText mRePassword = null;
 
+    private ISignListener mISignListener = null;
+
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        if (activity instanceof ISignListener) {
+            mISignListener = (ISignListener) activity;
+        }
+    }
+
     @OnClick(R2.id.btn_sign_up)
-    void onClickSignUp(){
-        if (checkForm()){
-//            RestClient.builder()
-//                    .url("sign_up")
-//                    .params("","")
-//                    .success(new ISuccess() {
-//                        @Override
-//                        public void onSuccess(String response) {
-//
-//                        }
-//                    })
-//                    .build()
-//                    .post();
-            Toast.makeText(getContext(), "验证通过", Toast.LENGTH_SHORT).show();
+    void onClickSignUp() {
+        if (checkForm()) {
+            RestClient.builder()
+                    .url("http://www.baidu.com")
+                    .params("name", mName.getText().toString())
+                    .params("email", mEmail.getText().toString())
+                    .params("phone", mPhone.getText().toString())
+                    .params("password", mPassword.getText().toString())
+                    .success(new ISuccess() {
+                        @Override
+                        public void onSuccess(String response) {
+                            LatteLogger.json("USER_PROFILE", response);
+                            SignHandler.onSignUp(response, mISignListener);
+                        }
+                    })
+                    .build()
+                    .post();
+            Toast.makeText(getContext(), "注册验证通过", Toast.LENGTH_SHORT).show();
         }
     }
 
     @OnClick(R2.id.tv_link_sign_in)
-    void onClickLink(){
+    void onClickLink() {
         start(new SignInDelegate());
     }
 
