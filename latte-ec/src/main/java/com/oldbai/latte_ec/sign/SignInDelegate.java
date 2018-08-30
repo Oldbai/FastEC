@@ -12,6 +12,8 @@ import com.oldbai.latte_core.delegates.LatteDelegate;
 import com.oldbai.latte_core.net.RestClient;
 import com.oldbai.latte_core.net.callback.ISuccess;
 import com.oldbai.latte_core.util.log.LatteLogger;
+import com.oldbai.latte_core.wechat.LatteWeChat;
+import com.oldbai.latte_core.wechat.callback.IWeChatSignInCallback;
 import com.oldbai.latte_ec.R;
 import com.oldbai.latte_ec.R2;
 
@@ -39,7 +41,7 @@ public class SignInDelegate extends LatteDelegate {
     void onClickSignIn() {
         if (checkForm()) {
             RestClient.builder()
-                    .url("http://www.baidu.com")
+                    .url("http://192.168.137.1/fastEcServer/api/user_profile.php")
                     .params("email", mEmail.getText().toString())
                     .params("password", mPassword.getText().toString())
                     .success(new ISuccess() {
@@ -57,7 +59,12 @@ public class SignInDelegate extends LatteDelegate {
 
     @OnClick(R2.id.icon_sign_in_wechat)
     void onClickWeChat() {
+        LatteWeChat.getInstance().onSignSuccess(new IWeChatSignInCallback() {
+            @Override
+            public void onSignInSuccess(String userInfo) {
 
+            }
+        });
     }
 
     @OnClick(R2.id.tv_link_sign_up)

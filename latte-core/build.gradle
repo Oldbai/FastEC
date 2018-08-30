@@ -24,7 +24,7 @@ android {
 }
 
 dependencies {
-    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    api fileTree(include: ['*.jar'], dir: 'libs')
     api 'com.android.support:appcompat-v7:27.1.1'
     api 'com.android.support:design:27.1.1'
     api 'com.android.support:animated-vector-drawable:27.1.1'
@@ -63,4 +63,6 @@ dependencies {
     //数据库依赖
     api 'org.greenrobot:greendao-generator:3.2.2'
     api 'org.greenrobot:greendao:3.2.2'
+    //包含统计
+    api 'com.tencent.mm.opensdk:wechat-sdk-android-with-mta:+'
 }
