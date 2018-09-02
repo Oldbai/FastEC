@@ -19,6 +19,8 @@ import com.oldbai.latte_ec.sign.ISignListener;
 import com.oldbai.latte_ec.sign.SignInDelegate;
 import com.oldbai.latte_ec.sign.SignUpDelegate;
 
+import qiu.niorgai.StatusBarCompat;
+
 public class ExampleActivity extends ProxyActivity implements
         ISignListener,
         ILauncherListener {
@@ -31,6 +33,7 @@ public class ExampleActivity extends ProxyActivity implements
             actionBar.hide();
         }
         Latte.getConfigurator().withActivity(this);
+        StatusBarCompat.translucentStatusBar(this, true);
     }
 
     @Override
@@ -53,7 +56,7 @@ public class ExampleActivity extends ProxyActivity implements
         switch (tag) {
             case SIGNED:
                 Toast.makeText(this, "启动结束，用户登陆了", Toast.LENGTH_SHORT).show();
-                startWithPop(new IndexDelegate());
+                startWithPop(new EcBottomDelegate());
                 break;
             case NOT_SIGNED:
                 Toast.makeText(this, "启动结束，用户登陆了", Toast.LENGTH_SHORT).show();

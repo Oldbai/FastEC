@@ -2,13 +2,8 @@ package com.oldbai.latte_core.net.rx;
 
 import android.content.Context;
 
-import com.oldbai.latte_core.net.RestClient;
 import com.oldbai.latte_core.net.RestCreator;
-import com.oldbai.latte_core.net.callback.IError;
-import com.oldbai.latte_core.net.callback.IFailure;
-import com.oldbai.latte_core.net.callback.IRequest;
-import com.oldbai.latte_core.net.callback.ISuccess;
-import com.oldbai.latte_core.ui.LoaderStyle;
+import com.oldbai.latte_core.ui.loader.LoaderStyle;
 
 import java.io.File;
 import java.util.Map;

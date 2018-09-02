@@ -1,6 +1,5 @@
 package com.oldbai.latte_core.delegates;
 
-import android.graphics.PorterDuffXfermode;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -16,7 +15,7 @@ import me.yokeyword.fragmentation_swipeback.SwipeBackFragment;
 
 public abstract class BaseDelegate extends SwipeBackFragment {
 
-    private Unbinder mUnbinder = null;
+    private Unbinder mUnBinder = null;
 
     public abstract Object setLayout();
 
@@ -34,7 +33,7 @@ public abstract class BaseDelegate extends SwipeBackFragment {
             throw new ClassCastException("setLayout() type must be int or View");
         }
         if (rootView != null) {
-            mUnbinder = ButterKnife.bind(this, rootView);
+            mUnBinder = ButterKnife.bind(this, rootView);
             onBindView(savedInstanceState, rootView);
         }
         return rootView;
@@ -47,8 +46,8 @@ public abstract class BaseDelegate extends SwipeBackFragment {
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        if (mUnbinder != null) {
-            mUnbinder.unbind();
+        if (mUnBinder != null) {
+            mUnBinder.unbind();
         }
     }
 }

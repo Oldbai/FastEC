@@ -1,4 +1,4 @@
-package com.oldbai.latte_core.ui;
+package com.oldbai.latte_core.ui.loader;
 
 public enum LoaderStyle {
     BallPulseIndicator,

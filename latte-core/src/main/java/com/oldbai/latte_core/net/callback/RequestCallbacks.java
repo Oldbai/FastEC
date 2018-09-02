@@ -3,8 +3,8 @@ package com.oldbai.latte_core.net.callback;
 
 import android.os.Handler;
 
-import com.oldbai.latte_core.ui.LatteLoader;
-import com.oldbai.latte_core.ui.LoaderStyle;
+import com.oldbai.latte_core.ui.loader.LatteLoader;
+import com.oldbai.latte_core.ui.loader.LoaderStyle;
 
 
 import retrofit2.Call;
