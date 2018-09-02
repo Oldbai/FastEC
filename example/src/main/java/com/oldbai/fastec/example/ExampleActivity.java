@@ -14,6 +14,7 @@ import com.oldbai.latte_core.ui.launcher.OnLauncherFinishTag;
 import com.oldbai.latte_ec.launcher.LauncherDelegate;
 import com.oldbai.latte_ec.launcher.LauncherScrollDelegate;
 import com.oldbai.latte_ec.main.EcBottomDelegate;
+import com.oldbai.latte_ec.main.index.IndexDelegate;
 import com.oldbai.latte_ec.sign.ISignListener;
 import com.oldbai.latte_ec.sign.SignInDelegate;
 import com.oldbai.latte_ec.sign.SignUpDelegate;
@@ -52,7 +53,7 @@ public class ExampleActivity extends ProxyActivity implements
         switch (tag) {
             case SIGNED:
                 Toast.makeText(this, "启动结束，用户登陆了", Toast.LENGTH_SHORT).show();
-                startWithPop(new EcBottomDelegate());
+                startWithPop(new IndexDelegate());
                 break;
             case NOT_SIGNED:
                 Toast.makeText(this, "启动结束，用户登陆了", Toast.LENGTH_SHORT).show();
