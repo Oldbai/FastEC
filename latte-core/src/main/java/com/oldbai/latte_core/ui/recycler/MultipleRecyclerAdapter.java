@@ -1,6 +1,5 @@
 package com.oldbai.latte_core.ui.recycler;
 
-import android.provider.ContactsContract;
 import android.support.v7.widget.GridLayoutManager;
 import android.view.View;
 import android.widget.ImageView;
