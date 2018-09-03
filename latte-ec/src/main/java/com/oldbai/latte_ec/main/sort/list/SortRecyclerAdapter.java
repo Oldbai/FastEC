@@ -6,6 +6,7 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.AppCompatTextView;
 import android.view.View;
 
+import com.oldbai.latte_core.delegates.LatteDelegate;
 import com.oldbai.latte_core.ui.recycler.ItemType;
 import com.oldbai.latte_core.ui.recycler.MultipleFields;
 import com.oldbai.latte_core.ui.recycler.MultipleItemEntity;
@@ -13,6 +14,7 @@ import com.oldbai.latte_core.ui.recycler.MultipleRecyclerAdapter;
 import com.oldbai.latte_core.ui.recycler.MultipleViewHolder;
 import com.oldbai.latte_ec.R;
 import com.oldbai.latte_ec.main.sort.SortDelegate;
+import com.oldbai.latte_ec.main.sort.content.ContentDelegate;
 
 import java.util.List;
 
@@ -54,6 +56,7 @@ public class SortRecyclerAdapter extends MultipleRecyclerAdapter {
                             mPrePosition = currentPosition;
 
                             final int contentId = getData().get(currentPosition).getField(MultipleFields.ID);
+                            showContent(contentId);
                         }
                     }
                 });
@@ -74,6 +77,18 @@ public class SortRecyclerAdapter extends MultipleRecyclerAdapter {
                 break;
             default:
                 break;
+        }
+    }
+
+    private void showContent(int contentId) {
+        final ContentDelegate delegate = ContentDelegate.newInstance(contentId);
+        switchContent(delegate);
+    }
+
+    private void switchContent(ContentDelegate delegate) {
+        final LatteDelegate contentDelegate = DELEGATE.findChildFragment(ContentDelegate.class);
+        if (contentDelegate != null) {
+            contentDelegate.replaceFragment(delegate, false);
         }
     }
 }
