@@ -5,7 +5,7 @@ apply plugin: 'com.jakewharton.butterknife'
 android {
     compileSdkVersion 27
     defaultConfig {
-        minSdkVersion 15
+        minSdkVersion 19
         targetSdkVersion 27
         versionCode 1
         versionName "1.0"
@@ -74,7 +74,7 @@ dependencies {
     api 'com.github.bumptech.glide:okhttp3-integration:4.8.0@aar'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.8.0'
     //沉浸式状态栏
-    api ('com.github.niorgai:StatusBarCompat:2.1.4', {
+    api('com.github.niorgai:StatusBarCompat:2.1.4', {
         exclude group: 'com.android.support'
     })
     //Google AutoValue
