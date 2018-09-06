@@ -25,7 +25,7 @@ public class LatteLoader {
         showLoading(context, type.name());
     }
 
-    public static void showLoading(Context context, String type) {
+    private static void showLoading(Context context, String type) {
         final AppCompatDialog dialog = new AppCompatDialog(context, R.style.dialog);
 
         final AVLoadingIndicatorView avLoadingIndicatorView = LoaderCreator.create(type, context);
@@ -36,7 +36,7 @@ public class LatteLoader {
         final Window dialogWindow = dialog.getWindow();
 
         if (dialogWindow != null) {
-            WindowManager.LayoutParams lp = dialogWindow.getAttributes();
+            final WindowManager.LayoutParams lp = dialogWindow.getAttributes();
             lp.width = deviceWidth / LOADER_SIZE_SCALE;
             lp.height = deviceHeight / LOADER_SIZE_SCALE;
             lp.height = lp.height + deviceHeight / LOADER_OFFSET_SCALE;

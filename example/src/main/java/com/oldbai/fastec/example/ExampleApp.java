@@ -5,7 +5,9 @@ import android.app.Application;
 import com.facebook.stetho.Stetho;
 import com.joanzapata.iconify.fonts.FontAwesomeModule;
 import com.oldbai.latte_core.app.Latte;
+import com.oldbai.fastec.example.event.TestEvent;
 import com.oldbai.latte_core.net.interceptors.DebugInterceptor;
+import com.oldbai.latte_core.net.rx.AddCookieInterceptor;
 import com.oldbai.latte_ec.database.DatabaseManager;
 import com.oldbai.latte_ec.icon.FontEcModule;
 
@@ -22,6 +24,11 @@ public class ExampleApp extends Application {
                 .withInterceptor(new DebugInterceptor("test", R.raw.test))
                 .withWeChatAppId("")
                 .withWeChatAppSecret("")
+                .withJavascriptInterface("latte")
+                .withWebEvent("test", new TestEvent())
+                //添加Cookie同步拦截器
+                .withWebHost("https://www.baidu.com/")
+                .withInterceptor(new AddCookieInterceptor())
                 .configure();
         initStetho();
         DatabaseManager.getInstance().init(this);

@@ -1,7 +1,9 @@
-package com.oldbai.latte_core.delegates.web.event;
+package com.oldbai.fastec.example.event;
 
 import android.webkit.WebView;
 import android.widget.Toast;
+
+import com.oldbai.latte_core.delegates.web.event.Event;
 
 public class TestEvent extends Event {
     @Override
