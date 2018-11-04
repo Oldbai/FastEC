@@ -4,7 +4,7 @@ public final class PagingBean {
     //当前是第几页
     private int mPageIndex = 0;
     //总数据条数
-    private int mTotle = 0;
+    private int mTotal = 0;
     //一页显示几条数据
     private int mPageSize = 0;
     //当前已经显示了几条数据
@@ -21,12 +21,12 @@ public final class PagingBean {
         return this;
     }
 
-    public int getTotle() {
-        return mTotle;
+    public int getTotal() {
+        return mTotal;
     }
 
-    public PagingBean setTotle(int totle) {
-        mTotle = totle;
+    public PagingBean setTotal(int total) {
+        mTotal = total;
         return this;
     }
 

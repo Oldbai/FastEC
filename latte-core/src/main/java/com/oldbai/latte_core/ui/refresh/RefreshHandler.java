@@ -60,7 +60,7 @@ public class RefreshHandler implements
                     @Override
                     public void onSuccess(String response) {
                         final JSONObject object = JSON.parseObject(response);
-                        BEAN.setTotle(object.getInteger("total"))
+                        BEAN.setTotal(object.getInteger("total"))
                                 .setPageSize(object.getInteger("page_size"));
                         //设置Adapter
                         mAdapter = MultipleRecyclerAdapter.create(CONVERTER.setJsonData(response));

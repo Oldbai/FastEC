@@ -20,7 +20,7 @@ public class ExampleApp extends Application {
                 .withIcon(new FontAwesomeModule())
                 .withIcon(new FontEcModule())
                 .withLoaderDelayed(1000)
-                .withApiHost("http://192.168.137.1/fastEcServer/api/")
+                .withApiHost("http://fastec.oldbai.com/api/")
                 .withInterceptor(new DebugInterceptor("test", R.raw.test))
                 .withWeChatAppId("")
                 .withWeChatAppSecret("")

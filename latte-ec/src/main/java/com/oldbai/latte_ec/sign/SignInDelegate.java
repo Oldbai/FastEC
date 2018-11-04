@@ -41,7 +41,7 @@ public class SignInDelegate extends LatteDelegate {
     void onClickSignIn() {
         if (checkForm()) {
             RestClient.builder()
-                    .url("http://192.168.137.1/fastEcServer/api/user_profile.php")
+                    .url("http://fastec.oldbai.com/api/user_profile.php")
                     .params("email", mEmail.getText().toString())
                     .params("password", mPassword.getText().toString())
                     .success(new ISuccess() {
